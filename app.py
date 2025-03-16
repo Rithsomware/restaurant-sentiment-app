@@ -20,6 +20,10 @@ MENU_ITEMS = [
 ]
 
 @app.route('/')
+def hero():
+    return render_template('hero.html')
+
+@app.route('/home')
 def index():
     """
     Renders the main ordering interface.

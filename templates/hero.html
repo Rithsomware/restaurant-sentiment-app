@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Only</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/hero.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="left">
+        <h1>Welcome To</h1>
+        <img
+          src="{{ url_for('static', filename='images/2.png') }}"
+          alt="Logo"
+        />
+      </div>
+      <div class="author">
+        <h3>Mr. Pratham's Restro</h3>
+
+        <img src="{{ url_for('static', filename='images/code.png') }}" alt="" />
+        
+        <button onclick="window.location.href='{{ url_for('index') }}'">
+          Go to Food List
+        </button>
+      </div>
+    </header>
+    <div class="banner">
+      <div class="product">
+        <div
+          class="soda"
+          style="--url: url('{{ url_for('static', filename='images/bg.png') }}')"
+        ></div>
+        <div
+          class="soda"
+          style="--url: url('{{ url_for('static', filename='images/bg2.png') }}')"
+        ></div>
+      </div>
+      <div class="rock">
+        <img
+          src="{{ url_for('static', filename='images/rock1.png') }}"
+          alt="Rock 1"
+        />
+        <img
+          src="{{ url_for('static', filename='images/rock2.png') }}"
+          alt="Rock 2"
+        />
+        <img
+          src="{{ url_for('static', filename='images/rock3.png') }}"
+          alt="Rock 3"
+        />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,37 +1,74 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>Restaurant Ordering Platform</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h1>Welcome to Our Restaurant</h1>
-    
-    <!-- Display flash messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <ul class="flashes">
-          {% for category, message in messages %}
-            <li class="{{ category }}">{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-    
-    <!-- Order form -->
-    <form action="{{ url_for('order') }}" method="post">
-        <label for="table_number">Table Number:</label>
-        <input type="text" id="table_number" name="table_number" required><br><br>
-        
-        <label for="dish">Select Dish:</label>
-        <select id="dish" name="dish">
-            {% for item in menu %}
-                <option value="{{ item.id }}">{{ item.name }} - ${{ item.price }}</option>
-            {% endfor %}
-        </select><br><br>
-        
-        <button type="submit">Place Order</button>
-    </form>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Welcome to Mr. Pratham's Restro</h1>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="hero">
+            <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="75" cy="75" r="70" fill="lightblue" />
+                <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="24" font-family="Poppins" dy=".3em">🍴</text>
+            </svg>
+            <p>Order delicious food with just a few clicks!</p>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <ul class="flashes">
+              {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+
+        <!-- Order Form Card -->
+        <div class="order-card">
+            <form action="{{ url_for('order') }}" method="post" class="order-form">
+                <div class="form-group">
+                    <label for="table_number">
+                        <i class="fas fa-chair"></i> Table Number:
+                    </label>
+                    <input type="text" id="table_number" name="table_number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dish">
+                        <i class="fas fa-utensils"></i> Select Dish:
+                    </label>
+                    <select id="dish" name="dish">
+                        {% for item in menu %}
+                            <option value="{{ item.id }}">{{ item.name }} - ₹{{ item.price }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="order-button">
+                    <i class="fas fa-shopping-cart"></i> Place Order
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Contact us: info@prathamsrestro.com | Follow us on social media!</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
